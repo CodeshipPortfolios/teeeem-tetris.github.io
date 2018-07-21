@@ -18,9 +18,10 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
+    "build": "npm-run-all build-css build-js  && rm -rf static/ && mv -f build/* ./ &&  rm -rf build/",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "rm -rf node_modules/.cache && npm run build && git add -f build/ && git commit -m \"Deploy create-react-app to gh-pages\" && git subtree push --prefix build origin gh-pages"
   },
   "devDependencies": {
     "node-sass-chokidar": "0.0.3",
